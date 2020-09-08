@@ -1,5 +1,5 @@
 <?php 
-		$con= mysqli_connect("localhost","root","","foodpark");
+		$con= mysqli_connect("localhost","root","","garikoi");
 
 
 		 // $query= "SELECT*FROM table ORDER BY sl ASC";

@@ -16,9 +16,9 @@
 ====================================================================================================================
 -->
   <!--=======================================About Us=============================================  -->
-  <div class="row ">
+  <div class="row " >
     <!-- --------------------------------------------------------------------------------------- -->
-      <div class="col-md-10 offset-md-1 bg-dark">
+      <div class="col-md-10 offset-md-1 bg-dark" id="about">
                 <h2 class="text-white">
                   About Us
                 </h2>
@@ -54,6 +54,7 @@
       </div>
     <!-- --------------------------------------------------------------------------------------- -->
   </div>
+  <br><br>
   <!--=======================================About Us=============================================  -->
 <div class="row">
 
@@ -77,8 +78,9 @@
     
            <?php 
 
-            $con= mysqli_connect("localhost","root","","foodpark");
-            $query= "SELECT*FROM item ORDER BY sl ASC";
+            include 'mysqlconnect.php';
+            $query= "SELECT*FROM rides ORDER BY 'ride_type' ASC";
+            //ride_type,ride_name,ride_image,ride_passengercap,ride_baggagecap
             $result= mysqli_query($con, $query);
             $num_rows=mysqli_num_rows($result);
             if ($num_rows > 0){
@@ -90,28 +92,32 @@
             <div class="col-md-10 offset-md-1 col-sm-10  border border-dark" 
                                           style="border-width: 6px !important; 
                                                 margin-left: 24px !important;
-                                                margin-top: : 94px !important;
-
+                                                margin-bottom: 12px !important;
                                           ">
                 <!--      cars        -->
                       
                         <div class="row " >
-                          <div class="col-md-4">
-                            
-                          <img src="./img/car1.jpg" class="image-thumbnail" alt="..." style="height: 180px;">
+                          <div class="col-md-5">
+                            <img src="<?php echo $row['ride_image']; ?>" class="image-thumbnail" alt="" style="height: 200px !important; width: 100% !important;">
                           </div>
 
-                            <div class="col-md-8 text-left">
+                            <div class="col-md-7 text-left">
                                 <div class="">
-                                  <h6 class="card-title"><?php echo $row['item_name']; ?></h6>
-                                  <span class="badge badge-danger">Price: <?php echo $row['item_price']; ?> TK</span>
-                                  <!--   //<p class="card-text font-weight-lighter"><?php echo $row['sl']; ?></p> -->
-                                  <p class="card-text font-weight-lighter"><?php echo $row['item_des']; ?></p>
-
-                                  <!-- Submit Button -->
-                                  <input type="submit" name="order" class="btn btn-dark text-white" value="Order it" style="margin: 8px;">
+                                  <h3 class="text-info bg-dark p-1">Car Type : <?php echo $row['ride_type']; ?></h3>
+                                  <h4 class="card-title">Car Name: <?php echo $row['ride_name']; ?></h4>
+                                  <h6 class="">Passengers : <?php echo $row['ride_passengercap']; ?> max </h6>
+                                  <h6  class="card-title ">Baggage : <?php  echo $row['ride_baggagecap']; ?></h6>
                                 </div>
+                                <!-- Submit Button -->
+                                  <!-- <input type="submit" name="booking" action="booking.php?action=booking&id=<?php echo $row['ride_type']; ?>" class="btn btn-dark btn-lg btn-block text-white" width="60%" value="BOOK NOW / এখনই বুক করুন " style="">  -->
+
+                              <a href ="booking.php?action=booking&id=<?php echo $row['ride_id']; ?>" class="btn btn-dark btn-lg btn-block text-white">BOOK NOW / এখনই বুক করুন</a>
+
+                                 
                             </div>
+                           <!--  <div class="col-md-3 text-left">
+                                  
+                            </div> -->
                           
                         </div>
                       

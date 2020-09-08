@@ -2,17 +2,15 @@
     
     
 <!--    Footer Starts   -->
-   <div class="row bg-dark text-white" style="margin-top: 10px;" >
+   <div class="row bg-secondary text-white" style="margin-top: 10px;" >
       <!-- ---------------------------Footer Menu-------------------------------------- -->
       <div class="col-md-10 offset-md-1">
           <div class="row mt-3">
             <!-- ----------------------------------------------- -->
               <div class="col-md-2">
-                <a class="text-white" href="#">
-                        <img src="img/garikoilogo2(White).png" class="image image-responsive" width="100%" height="50%"> 
-                        <h1 class="p-1">
-                            <em>GariKoi.com</em>
-                        </h1>
+                <a class="text-white" href="index.php text-center">
+                        <img src="img/garikoilogo2(White).png" class="img-fluid mx-auto d-block" > 
+                        <h2 class="mx-auto"><em>GariKoi.com</em></h2>
                 </a>
               </div>
               <!-- --------- -->
@@ -40,7 +38,7 @@
               <div class="col-md-3 ">
                 <h4>Contact us</h4>
                 <p> Address: Road no.00 ,House#00, Khulna</p>
-                <p> 01700 000000</p>
+                <p><a class="text-white" href="Tel: 01700 000000">Tel: 01700 000000</a></p>
                 
               </div>
             <!-- ----------------------------------------------- -->

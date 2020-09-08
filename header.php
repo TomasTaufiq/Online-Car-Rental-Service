@@ -1,3 +1,7 @@
+<?php   date_default_timezone_set("ASIA/DHAKA");
+  $date = date("D, d-M-Y  ");
+  $time= date("h:i a");
+   ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,7 +38,7 @@
            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
               <a class="navbar-brand" href="#">
                   <h2>
-                    <img src="img/garikoilogo2(White).png" class="image-responsive" width="160px" height="60px">
+                    <img src="img/garikoilogo2(White).png" class="img-fluid " width="130px" height="56px">
                     <!-- <em class="text-light">GariKoi.com</em> -->
                   </h2>
               </a>
@@ -46,16 +50,16 @@
                   <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#pricing">About us</a>
+                        <a class="nav-link" href="index.php#about">About us</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#cars">Our cars</a>
+                        <a class="nav-link" href="index.php#cars">Our cars</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#pricing">Get-a-Car</a>
+                        <a class="nav-link" href="index.php#quote">Get-a-Quotation</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#pricing">Admin</a>
@@ -80,7 +84,7 @@
     -->
 
 
-    <div class="row">
+    <div class="row" style="margin-bottom: 30px !important;">
       
       <div class="col-md-12"  style="
                     
@@ -122,7 +126,7 @@
     </div>  
 
 
-
+<div class="row" ><br></div>
 
 
 <!--   Header Ends     -->
