@@ -1,298 +1,148 @@
 <?php session_start();
 
-  //$con= mysqli_connect("localhost","root","","garikoi");
-//session_destroy(); 
-$item_array= array();
-
-if (filter_input(INPUT_POST, 'order')) {
-    if (isset($_SESSION['cart'])) {
-      $count= count($_SESSION['cart']);
-      print_r($count);
-      $item_array = array_column($_SESSION['cart'], 'id');
-      print_r($item_array);
-      if(!in_array(filter_input(INPUT_GET, 'id'), $item_array)){
-        $_SESSION['cart'][$count]=array(
-            'sl' => filter_input(INPUT_GET, 'id'),
-            'item_name'=>filter_input(INPUT_POST, 'item_name'),
-            'item_price'=>filter_input(INPUT_POST, 'item_price'),
-            'item_quantity'=>filter_input(INPUT_POST, 'item_quantity')
-        );
-      }
-      else{
-        for ($i=0;$i<$count($item_array);$i++){
-          if ($item_array[$i]==filter_input(INPUT_GET, 'id')) {
-            //add item quantity to products
-            $_SESSION['cart'][$i]['item_quantity']+= filter_input(INPUT_POST, 'item_quantity');
-          }
-        }
-      }
-
-    }
-    else{
-      //if Cart dosent exist
-      $_SESSION['cart'][0]=array(
-            'sl' => filter_input(INPUT_GET, 'id'),
-            'item_name'=>filter_input(INPUT_POST, 'item_name'),
-            'item_price'=>filter_input(INPUT_POST, 'item_price'),
-            'item_quantity'=>filter_input(INPUT_POST, 'item_quantity')
-      );
-    }
-  }
-// pre_r($_SESSION);
-
-// function pre_r($array){
-//   echo "<pre>";
-//   print_r($array);
-//   echo "</pre>";
-// }
 
  
  ?>
 <!-- Header          ========= -->
 <?php include 'header.php'; ?>
 <!--   Header Ends     -->
-   
-
- 
-   
-<!--     body   -->
+<!--=============================================Body=============================================  -->
 
 
 
-
-<div class="row " style="margin: 10px; padding: 10px;">
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Your Cart</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+<!-- 
+====================================================================================================================
+                                              Display
+====================================================================================================================
+-->
+  <!--=======================================About Us=============================================  -->
+  <div class="row ">
+    <!-- --------------------------------------------------------------------------------------- -->
+      <div class="col-md-10 offset-md-1 bg-dark">
+                <h2 class="text-white">
+                  About Us
+                </h2>
               </div>
-              <div class="modal-body">
-                
+      <div class="row">
+        <!-- ------------------------------------ -->
+          
+          <div class="col-md-10 offset-md-1">
+              <div>
+                <p class="lead text-secondary">
+                  The Car Rental System is a very demanding system for today’s day-to-day life. People are now using online car rental services. But it is not possible for every small Rent-a-car business man to afford a site like this. The system presented here is meant to be affordable for all.
+                </p>
+                <p class="lead">Garikoi.com</p>
+                <h6 class="lead text-secondary">Objectives</h6>
 
-                <!-- ----------------------------------CART---------------------- -->
-                  <table class="table table-hover table-dark">
-                        <thead>
-                          <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col"> X </th>
-                          </tr>
-                        </thead>
-
-                    <!-- Fetch Cart Items Dynamically -->
-                    <?php 
-                      if(!empty($_SESSION["cart"])){
-                        $total=0;
-                        foreach ($_SESSION["cart"] as $key => $value) {
-                        ?>
-                        <!-- Fetch Cart Items Dynamically -->
-
-                        <tbody>
-                          <tr>
-                            <th scope="row"></th>
-                            <td><?php echo $value['item_name']; ?></td>
-                            <td><?php echo $value['item_price']; ?> BDT</td>
-                            <td><?php echo $value['item_quantity']; ?></td>
-                            <td><?php echo number_format(($value['item_quantity']*$value['item_price']), 2);?></td>
-                            <td><a href ="index.php?action=delete&id=<?php echo $value['sl']; ?>"><span class="badge-danger">  X  </span></a></td>
-                          </tr>
-                       
-
-                          <?php 
-                            $total= $total+($value['item_quantity']*$value['item_price']);
-                           ?>
-                          
-                        <!-- Fetch Cart Items Dynamically -->
-                    <?php 
-                        }
-
-
-                      }
-
-                    ?>
-                    <tr>
-                            <th scope="row">Total</th>
-                            <th scope="row text-left"><?php echo number_format($total,2); ?></th>
-                          </tr>
-                    <!-- Fetch Cart Items Dynamically -->
-                         </tbody>
-                      </table>
-
+                <p class="lead text-secondary">                 
+                The site is designed as simple but efficient system to maintain rental services for cars. The main objectives based on which the project is developed are listed below:
+                 
+                </p class="lead text-secondary">
+                <ul class="lead text-secondary">
+                  <li>Simple design for users</li>
+                  <li>Display available cars in a scroll </li>
+                  <li>One click booking</li>
+                  <li>Booking confirmation form</li>
+                  <li>Contact sharing</li>
+                  <li>Easy to maintain admin dashboard</li>
+                  <li>Easy input new car and details</li>
+                </ul>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-dismiss="modal">Order More !</button>
-                <button type="button" class="btn btn-success">Checkout</button>
-              </div>
-            </div>
+
           </div>
-
-    </div>
-
-
-</div>
-<!-- Modal Button -->
- <!-- Button trigger modal -->
-      <div class="" style="margin-top: 100px;">
-        
+        <!-- ------------------------------------ -->
       </div>
-        <button type="button" class="btn btn-dark fixed-bottom " style="" data-toggle="modal" data-target="#exampleModalCenter" style="margin-top: 100px;">
-          <h5 class="text-white"> View Cart </h5>
-        </button>
-<!-- Modal Button -->
-
-<!-- =======================================
-                   master row
-====================================== -->
+    <!-- --------------------------------------------------------------------------------------- -->
+  </div>
+  <!--=======================================About Us=============================================  -->
 <div class="row">
- <!-- =======================================
-                   master row
-====================================== -->
+
+<!-- ====================================================================================================================================
+                                            Main row
+============================================================================================================================== -->
 
 
-
-        <!-- ------------Collumn 2-------------- -->
-        <div class="col-md-12 col-sm-12">
-          <!-- ------------Collumn 2-------------- -->
-
-
-
-
-      <!-- 
-      ========================================
-                Display Porducts
-      ========================================= 
-      -->
-       
-           <div class="row">
-             
-
+<!-- 
+====================================================================================================================
+                                              Display
+====================================================================================================================
+-->
+<div class="col-md-10 offset-md-1 p-1" id="cars">
+  <div class="row bg-dark m-1" >
+        <h2 class="text-white">
+          Our Cars
+        </h2>
+    </div>
+  <div class="row ">
+    
            <?php 
 
             $con= mysqli_connect("localhost","root","","foodpark");
             $query= "SELECT*FROM item ORDER BY sl ASC";
             $result= mysqli_query($con, $query);
             $num_rows=mysqli_num_rows($result);
-
-            
             if ($num_rows > 0){
               while ($row = mysqli_fetch_assoc($result)){
-              
-
-
-              //Fetch Array Start: Items
+           
           ?>
 
 
-            <div class="col-md-3 col-sm-3">
-              <form method="post" action="index.php?action=add&id=<?php echo $row['sl'];?>">
-                <!--      ITEMS        -->
+            <div class="col-md-10 offset-md-1 col-sm-10  border border-dark" 
+                                          style="border-width: 6px !important; 
+                                                margin-left: 24px !important;
+                                                margin-top: : 94px !important;
+
+                                          ">
+                <!--      cars        -->
                       
-                        <div class="card border-dark text-center" style="width: 80%; height: 20%;  ">
-                          <img src="<?php echo $row['item_img']; ?>" class="card-img-top" alt="..." style="height: 180px;">
-                          <div class="card-body">
-                            <h6 class="card-title"><?php echo $row['item_name']; ?></h6>
-                            <span class="badge badge-danger">Price: <?php echo $row['item_price']; ?> TK</span>
-                            <!--   //<p class="card-text font-weight-lighter"><?php echo $row['sl']; ?></p> -->
-                            <p class="card-text font-weight-lighter"><?php echo $row['item_des']; ?></p>
-
+                        <div class="row " >
+                          <div class="col-md-4">
                             
-                            <!-- Name -->
-                            <input type="hidden" name="item_name" class="form-control" value="<?php echo $row['item_name']; ?>">
-
-                            <!-- Price -->
-                            <input type="hidden" name="item_price"class="form-control" value="<?php echo $row['item_price']; ?>" style="margin: 8px; width: 20px;">
-                            <!-- // Product Quantity -->
-                            <input type="text" name="item_quantity" class="form-control" value="1">
-
-
-                            <!-- Submit Button -->
-                            <input type="submit" name="order" class="btn btn-dark text-white" value="Order it" style="margin: 8px;">
-
-                            
+                          <img src="./img/car1.jpg" class="image-thumbnail" alt="..." style="height: 180px;">
                           </div>
+
+                            <div class="col-md-8 text-left">
+                                <div class="">
+                                  <h6 class="card-title"><?php echo $row['item_name']; ?></h6>
+                                  <span class="badge badge-danger">Price: <?php echo $row['item_price']; ?> TK</span>
+                                  <!--   //<p class="card-text font-weight-lighter"><?php echo $row['sl']; ?></p> -->
+                                  <p class="card-text font-weight-lighter"><?php echo $row['item_des']; ?></p>
+
+                                  <!-- Submit Button -->
+                                  <input type="submit" name="order" class="btn btn-dark text-white" value="Order it" style="margin: 8px;">
+                                </div>
+                            </div>
+                          
                         </div>
                       
-                    <!--      ITEMS        -->
-                
-              </form>
-              
+                    <!--      cars      -->
             </div>
-
-
-
-           <?php
-                //Fetch Array End
+          <?php
+                
                 };
               };
 
           ?>
+  </div> 
 
-           </div> 
-
-      <!-- 
-      ========================================
-        Display Porducts Ends
-      ========================================= 
-      -->
-
-
-          <!-- ------------Collumn 2-------------- -->
-        </div>
-        <!-- ------------Collumn 2-------------- -->
+</div> 
 
 
 
-
-        <!-- ------------Collumn 1-------------- -->
-        <!-- <div class="col-md-3 bg-dark text-white"> -->
-          <!-- ------------Collumn 1-------------- -
-
-          
-            </div>   -->
-
-          <!-- ------------Collumn 1-------------- -
-        </div>
-        - ------------Collumn 1-------------- -->
-         
-            <!-- ----------------------------------------------------------------------- -->
-
-
-
-
-<!-- =======================================
-                   master row
-====================================== -->
-
+<!-- 
+====================================================================================================================
+                                              Display
+====================================================================================================================
+-->
 </div>
 
-<!-- =======================================
-  master row
-====================================== -->
-
-
-
+<!-- 
+====================================================================================================================
+                                              Display
+====================================================================================================================
+-->
     
-
-
-
 
 <!--     body   -->
-
-    
-
-
-
-    
-    
 <!--    Footer Starts   -->
 <?php include 'footer.php'; ?>
