@@ -62,7 +62,7 @@
                         <a class="nav-link" href="index.php#quote">Get-a-Quotation</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#pricing">Admin</a>
+                        <a class="nav-link" href="adminpanel/admin.php">Admin</a>
                       </li>
                     </ul>
                     

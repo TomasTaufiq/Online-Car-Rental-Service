@@ -1,7 +1,5 @@
 <?php session_start();
 
-
- 
  ?>
 <!-- Header          ========= -->
 <?php include 'header.php'; ?>
